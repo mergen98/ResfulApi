@@ -17,9 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('description')->nullable();
-            $table->decimal('price', 5, 2);
+            $table->string('description',1000)->nullable();
+            $table->integer('quantity')->unsigned();
+            $table->string('image');
+            $table->string('status')->default(\App\Models\Product::UNAVAILABLE_PRODUCT);
+            $table->string('seller_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('seller_id')->references('id')->on('users');
         });
     }
 

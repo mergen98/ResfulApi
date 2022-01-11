@@ -42,6 +42,17 @@ class User extends Authenticatable
         'verification_token',
     ];
 
+    public function isVerified(){
+        return $this->verified == User::VERIFIED_USER;
+    }
+    public function isAdmin(){
+        return $this->admin == User::ADMIN_USER;
+    }
+    public static function generateVerificationCode(){
+        return str_random(40);
+    }
+
+
     /**
      * The attributes that should be cast.
      *
