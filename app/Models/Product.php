@@ -19,6 +19,7 @@ class Product extends Model
        'status',
        'image',
        'seller_id',
+       'slug'
     ];
 
    public function isavailable(){
