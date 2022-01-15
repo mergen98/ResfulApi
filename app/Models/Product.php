@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use function Symfony\Component\Translation\t;
 
 class Product extends Model
 {
 
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     const AVAILABLE_PRODUCT = 'available';
     const UNAVAILABLE_PRODUCT = 'unavailable';
 
@@ -20,6 +23,9 @@ class Product extends Model
        'image',
        'seller_id',
        'slug'
+    ];
+    protected $hidden = [
+        'pivot'
     ];
 
    public function isavailable(){
