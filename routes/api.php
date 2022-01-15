@@ -34,6 +34,9 @@ Route::resource('products', 'App\Http\Controllers\Product\ProductController',['o
 // Route::resource('sellers','Seller\SellerController',['only' => ['index','show']]);
 Route::resource('sellers', 'App\Http\Controllers\Seller\SellerController',['only' => ['index','show']]);
 Route::resource('sellers.transactions','App\Http\Controllers\Seller\SellerTransactionController',['only' => ['index']]);
+Route::resource('sellers.categories','App\Http\Controllers\Seller\SellerCategoryController',['only' => ['index']]);
+Route::resource('sellers.buyers','App\Http\Controllers\Seller\SellerBuyerController',['only' => ['index']]);
+Route::resource('sellers.products','App\Http\Controllers\Seller\SellerProductController',['only' => ['index','store','update','destroy']]);
 
 // Route::resource('transactions','Transaction\TransactionController',['only' => ['index','show']]);
 Route::resource('transactions', 'App\Http\Controllers\Transaction\TransactionController',['only' => ['index','show']]);

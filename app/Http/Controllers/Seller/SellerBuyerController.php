@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\ApiController;
-use App\Models\Category;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
-class CategoryBuyerController extends ApiController
+class SellerBuyerController extends ApiController
 {
-//      It shows no data in the Api
-//    {
-//    "data": [
-//        null
-//    ]
-//}
     /**
      * Display a listing of the resource.
      *
@@ -21,14 +15,14 @@ class CategoryBuyerController extends ApiController
      */
     public function index($id)
     {
-        $category = Category::findOrFail($id);
-        $buyers = $category->products()
+        $seller = Seller::findOrFail($id);
+        $buyers = $seller->products()
             ->whereHas('transactions')
             ->with('transactions.buyer')
             ->get()
             ->pluck('transactions')
             ->collapse()
-            ->pluck('transactions.buyer')
+            ->pluck('buyer')
             ->unique($id)
             ->values();
         return $this->showall($buyers);
